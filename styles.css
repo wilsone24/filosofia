@@ -1,0 +1,151 @@
+body {
+  font-family: "Segoe UI", sans-serif;
+  background-color: #e1eaf8;
+  text-align: center;
+  padding: 4vh 4vw;
+  margin: 0;
+}
+
+h1 {
+  color: #333;
+  margin-bottom: 3vh;
+  font-size: 2.5vw;
+}
+
+.card-container {
+  display: flex;
+  justify-content: center;
+  gap: 4vw;
+  flex-wrap: wrap;
+  padding-top: 2vh;
+}
+
+.card {
+  width: 16.5vw;
+  height: 50vh;
+  perspective: 1000px;
+  cursor: pointer;
+  border-radius: 2vh;
+  box-shadow: 0 1vh 2vh rgba(0, 0, 0, 0.2);
+  background-image: url("card-back-ghibli.png");
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.card .card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.card.flipped .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 2vh;
+  backface-visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-front {
+  background-image: url("card-back-ghibli.png");
+  background-size: cover;
+  background-position: center;
+  color: white;
+  font-size: 2vw;
+  border-radius: 2vh;
+}
+
+.card-back {
+  background-color: white;
+  transform: rotateY(180deg);
+  flex-direction: column;
+  padding: 1vh;
+}
+
+.card-back img {
+  border-radius: 35px;
+  width: 90%;
+  height: auto;
+  max-height: 75%;
+  object-fit: contain;
+  margin-bottom: 1vh;
+}
+
+.card-back .blanks {
+  font-size: 1.8vw;
+  letter-spacing: 0.5vw;
+  color: #1b1b1b;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: all 0.4s ease;
+  padding: 1vh 0;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilo especial cuando se adivina bien */
+.card-back .blanks.correct {
+  color: #3a86ff;
+  text-shadow: 0 0 10px #3a86ff;
+  transform: scale(0.8);
+  animation: bounceIn 0.6s ease;
+}
+
+@keyframes bounceIn {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+#credits {
+  font-size: 2.5vw;
+  font-weight: 900;
+  background: linear-gradient(90deg, #6f8cfc, #1ec624);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+  margin-top: 5vh;
+}
+
+#input-zone {
+  margin-top: 4vh;
+}
+
+#guessInput {
+  padding: 12px 24px;
+  font-size: 1.2em;
+  border-radius: 10px;
+  border: 2px solid #ccc;
+  outline: none;
+  width: 60vw;
+  max-width: 400px;
+  text-align: center;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+#guessInput:focus {
+  border-color: #3a86ff;
+  box-shadow: 0 0 8px rgba(58, 134, 255, 0.5);
+}
