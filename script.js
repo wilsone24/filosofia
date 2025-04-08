@@ -1,4 +1,7 @@
 let activeCard = null;
+let score = 0;
+
+const scoreDisplay = document.getElementById("score");
 
 document.querySelectorAll(".card").forEach((card) => {
   const inner = document.createElement("div");
@@ -33,22 +36,28 @@ document.querySelectorAll(".card").forEach((card) => {
   });
 });
 
+
 document.getElementById("guessInput").addEventListener("keydown", (e) => {
-  if (e.key === "Enter") {
-    const guess = e.target.value.trim().toLowerCase();
-    if (!activeCard) return;
-
-    const correctAnswer = activeCard.getAttribute("data-answer").toLowerCase();
-    const blanksElement = activeCard.querySelector(".blanks");
-
-    if (guess === correctAnswer) {
-      blanksElement.textContent = correctAnswer.toUpperCase();
-      blanksElement.classList.add("correct"); // <- ✨ Añade la clase para el efecto visual
-      e.target.value = "";
-      activeCard = null;
-    } else {
-      e.target.value = "";
-      alert("¡Incorrecto! Intenta de nuevo.");
+    if (e.key === "Enter") {
+      const guess = e.target.value.trim().toLowerCase();
+      if (!activeCard) return;
+  
+      const correctAnswer = activeCard.getAttribute("data-answer").toLowerCase();
+      const blanksElement = activeCard.querySelector(".blanks");
+  
+      if (guess === correctAnswer) {
+        blanksElement.textContent = correctAnswer.toUpperCase();
+        blanksElement.classList.add("correct");
+        e.target.value = "";
+  
+        // 👉 Sumamos puntos
+        score += 100;
+        scoreDisplay.textContent = `Puntos: ${score}`;
+  
+        activeCard = null;
+      } else {
+        e.target.value = "";
+        alert("¡Incorrecto! Intenta de nuevo.");
+      }
     }
-  }
-});
+  });

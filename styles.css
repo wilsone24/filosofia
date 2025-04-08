@@ -108,8 +108,8 @@ h1 {
 
 /* Estilo especial cuando se adivina bien */
 .card-back .blanks.correct {
-  color: #3a86ff;
-  text-shadow: 0 0 10px #3a86ff;
+  color: #acacac;
+  text-shadow: 0 0 10px #bfc2c7;
   transform: scale(0.8);
   animation: bounceIn 0.6s ease;
 }
@@ -129,15 +129,10 @@ h1 {
 }
 
 #credits {
-  font-size: 2.5vw;
-  font-weight: 900;
-  background: linear-gradient(90deg, #6f8cfc, #1ec624);
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-  -webkit-text-fill-color: transparent;
+  font-size: 1.5vw;
   text-align: center;
   margin-top: 5vh;
+  color: black;
 }
 
 #input-zone {
@@ -158,6 +153,23 @@ h1 {
 }
 
 #guessInput:focus {
-  border-color: #3a86ff;
-  box-shadow: 0 0 8px rgba(58, 134, 255, 0.5);
+  border-color: #000000;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+}
+
+
+.score-display {
+  position: absolute;
+  top: 2vh;
+  right: 4vw;
+  background: linear-gradient(90deg, #ffd700, #ffcc00, #ffaa00);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-size: 1.3vw;
+  font-weight: bold;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease;
+  cursor: default;
+  user-select: none;
 }
